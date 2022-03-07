@@ -1,0 +1,52 @@
+/*Index page Styling*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+}
+.btn {
+    border-radius: 0;
+}
+.navbar {
+    padding: .8rem;
+}
+.navbar-nav li {
+    padding-right: 20px;
+}
+.nav-link {
+    font-size: 1.1em !important;
+}
+
+.post-container {
+    display: flex !important;
+}
+
+.post-card:hover {
+    border-color: #22656D;
+}
+
+.content-text {
+    line-height: 2.5em;
+}
+
+
+/*---Media Queries---*/
+@media (max-width: 992px) {
+    
+}
+
+@media (max-width: 768px) {
+    
+}
+
+@media (max-width: 576px) {
+
+}
+
+/*---Bootstrap Padding Fix---*/
+[class*="col-"] {
+  padding: 1rem;
+}
