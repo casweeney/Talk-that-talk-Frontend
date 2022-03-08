@@ -11,6 +11,7 @@ import {
   CLEAR_CURRENT,
 } from "../types";
 
+// eslint-disable-next-line
 export default (state, action) => {
   switch (action.type) {
     case ADD_POST:

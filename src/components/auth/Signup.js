@@ -15,7 +15,7 @@ const Signup = ({ history }) => {
       history.push("/submit");
     }
 
-    if (error !== null) {
+    if (error !== null && error !== undefined) {
       setAlert(error, "danger");
       clearErrors();
     }

@@ -1,14 +1,51 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/auth/authContext";
 
 const Navbar = () => {
   const authContext = useContext(AuthContext);
-  const { logout } = authContext;
+  const { isAuthenticated, logout } = authContext;
 
   const onLogout = () => {
     logout();
   };
+
+  let submitUrl;
+  if (isAuthenticated) {
+    submitUrl = "/submit";
+  } else {
+    submitUrl = "/login";
+  }
+
+  const authLinks = (
+    <Fragment>
+      <li className="nav-item">
+        <a
+          className="nav-link"
+          style={{ cursor: "pointer" }}
+          onClick={onLogout}
+          to="#!"
+        >
+          Logout
+        </a>
+      </li>
+    </Fragment>
+  );
+
+  const guestLinks = (
+    <Fragment>
+      <li className="nav-item">
+        <Link className="nav-link" to="/login">
+          Login
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/signup">
+          Sign up
+        </Link>
+      </li>
+    </Fragment>
+  );
 
   return (
     <nav
@@ -34,23 +71,9 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav ml-auto">
+            {isAuthenticated ? authLinks : guestLinks}
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/signup">
-                Sign up
-              </Link>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" onClick={onLogout} to="#!">
-                Logout
-              </a>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/submit">
+              <Link className="nav-link" to={submitUrl}>
                 {" "}
                 <i className="fa fa-pencil"></i>{" "}
               </Link>
